@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+
+<body>
+  <div id="back">
+    <div id="popup">
+      <form action="/create" method="GET">
+        <input type="text" placeholder="Create a new file" required name="filename">
+        <input id="submit" type="submit" value="Okay">
+      </form>
+      <button>Cancel</button>
+    </div>
+    <div id="panel">
+      <div id="left">
+        <div id="box">
+          <h3>Some files</h3>
+          <div class="icons">
+            <i id="plus" class="ri-add-circle-line"></i>
+            <i class="ri-folder-5-fill"></i>
+          </div>
+        </div>
+        <hr>
+        <div id="innpanel">
+          <% data.forEach(function(val){ %>
+            <div class="boxes">
+              <h5><%= val %></h5>
+              <div class="icons">
+                <i class="ri-pencil-fill"></i>
+                <a href= <%= '/delete/' + val %>><i class="ri-delete-bin-5-fill"></i></a>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+      <div id="right">
+        <div id="top">
+          <nav>
+            <div class="tabs">
+              <h5>Filename</h5>
+              <i class="ri-close-circle-fill"></i>
+            </div>
+          </nav>
+          <form action="#" method="GET">
+            <textarea name="textarea" id="textarea"></textarea>
+          </form>
+        </div>
+        <div id="bottom">
+          <div id="botnav">
+            <div class="bottabs">
+              <h5>PROBLEMS</h5>
+            </div>
+            <div class="bottabs">
+              <h5>output</h5>
+            </div>
+            <div class="bottabs">
+              <h5>debug console</h5>
+            </div>
+            <div class="bottabs">
+              <h5>terminal</h5>
+            </div>
+
+          </div>
+          <form id="terminal" action="#" method="GET">
+            <textarea name="text" id="text"></textarea>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let plus = document.querySelector('#plus');
+    let popup = document.querySelector('#popup');
+    let cancel = document.querySelector('button');
+
+
+    plus.addEventListener('click', function(){
+      popup.style.display = "initial";
+    })
+
+    cancel.addEventListener('click', function(){
+      popup.style.display = "none";
+    })
+
+  </script>
+</body>
+
+</html>
